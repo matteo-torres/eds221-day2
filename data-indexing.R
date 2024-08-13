@@ -26,3 +26,23 @@ x
 df<- data.frame(a= c(1, 10, NA))
 df$a[df$a<5]<- 0
 df
+
+mtcars
+mtcars[mtcars$gear == 5,]
+mtcars[mtcars$gear == 5 & mtcars$cyl == 4,]
+
+subset(mtcars, gear == 5)
+subset(mtcars, gear == 5 & cyl == 4)
+
+library(tidyverse)
+ggplot(data = subset(mtcars, gear == 5 & cyl == 4),
+       aes(x = mpg, y = disp)) +
+  geom_point()
+
+df<- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
+df
+df$z <- NULL # removes data
+df
+
+df[c("x", "y")]
+df[setdiff(names(df), "z")]
